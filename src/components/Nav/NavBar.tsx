@@ -7,6 +7,7 @@ const NavBar = () => {
  <HStack justifyContent={"space-between"}>
 <Image src={viteIcon} alt="logo"/>
 <HStack>
+<Text>Light Mode</Text>
     <Switch isChecked={colorMode === 'dark'} onChange={toggleColorMode}/>
     <Text>Dark Mode</Text>
 </HStack>
