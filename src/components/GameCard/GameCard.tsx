@@ -8,6 +8,7 @@ import {
 import { DataResult } from '../hook/useGame';
 import IconList from './IconList';
 import CriticScore from './CriticScore';
+import { CroppedImage } from '../../services/crop-image';
 
 interface Props {
   game: DataResult;
@@ -16,7 +17,7 @@ const GameCard = ({ game }: Props) => {
   return (
     <Card borderRadius={10} overflow={'hidden'}>
       <Image
-        src={game.background_image}
+        src={CroppedImage(game.background_image)}
         alt="img"
       />
       <CardBody>
