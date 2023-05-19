@@ -5,6 +5,7 @@ import {
 } from '@chakra-ui/react';
 import NavBar from './components/Nav/NavBar';
 import GameGrid from './components/GameGrid/GameGrid';
+import GenericList from './components/GenericList/GenericList';
 const App = () => {
   return (
     <Grid
@@ -21,7 +22,7 @@ const App = () => {
           pl="2"
           bg="pink.300"
           area={'nav'}>
-          Nav
+          <GenericList />
         </GridItem>
       </Show>
       <GridItem
