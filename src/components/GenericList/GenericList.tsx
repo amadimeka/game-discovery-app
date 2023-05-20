@@ -1,15 +1,17 @@
-import { Box } from '@chakra-ui/react'
-import {useGenre} from '../hook/useGenre'
+import { Box } from '@chakra-ui/react';
+import { useGenre } from '../hook/useGenre';
 
 const GenericList = () => {
-    const {genres}= useGenre();
+  const { data } = useGenre();
   return (
-<Box>
-    <ul>
-        {genres.map((genre)=>(<li>{genre.name}</li>))}
-    </ul>
-</Box>
-  )
-}
+    <Box>
+      <ul>
+        {data.map((genre) => (
+          <li>{genre.name}</li>
+        ))}
+      </ul>
+    </Box>
+  );
+};
 
-export default GenericList
+export default GenericList;
