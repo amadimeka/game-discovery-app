@@ -13,10 +13,12 @@ import {
 
 interface Genre {
   onSelectGenre: (genre: GenreProps) => void;
+  selectGenre: GenreProps | null;
 }
 
 const GenericList = ({
   onSelectGenre,
+  selectGenre,
 }: Genre) => {
   const { data, loading } = useGenre();
   return (
@@ -32,6 +34,11 @@ const GenericList = ({
             />
             <Button
               variant="link"
+              fontWeight={
+                genre.id === selectGenre?.id
+                  ? 'bold'
+                  : 'normal'
+              }
               onClick={() =>
                 onSelectGenre(genre)
               }>

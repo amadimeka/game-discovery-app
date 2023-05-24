@@ -31,6 +31,7 @@ const App = () => {
             onSelectGenre={(genre) =>
               setSelectGenre(genre)
             }
+            selectGenre={selectGenre}
           />
         </GridItem>
       </Show>
