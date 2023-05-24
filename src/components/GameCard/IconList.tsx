@@ -35,6 +35,7 @@ const IconList: React.FC<Props> = ({
     <HStack marginY={'10px'}>
       {platforms.map((platform) => (
         <Icon
+          key={platform.id}
           as={icons[platform.slug]}
           color="grey.500"
         />

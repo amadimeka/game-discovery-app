@@ -1,5 +1,6 @@
 
 import { useData } from "./useData";
+import { GenreProps } from "./useGenre";
 export interface Platform{
     id: string,
     name: string,
@@ -13,8 +14,8 @@ export interface DataResult {
 parent_platforms:{ platform: Platform}[],
   }
 
-  export const useGame = () => 
-useData<DataResult>('/games')
+  export const useGame = (selectedGenre: GenreProps | null) => 
+useData<DataResult>('/games', {params: {genres: selectedGenre?.id}},[selectedGenre?.id])
 
     
   

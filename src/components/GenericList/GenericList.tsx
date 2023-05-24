@@ -1,15 +1,45 @@
-import { Box } from '@chakra-ui/react';
-import { useGenre } from '../hook/useGenre';
+import {
+  Box,
+  HStack,
+  List,
+  Image,
+  Button,
+  Spinner,
+} from '@chakra-ui/react';
+import {
+  GenreProps,
+  useGenre,
+} from '../hook/useGenre';
 
-const GenericList = () => {
-  const { data } = useGenre();
+interface Genre {
+  onSelectGenre: (genre: GenreProps) => void;
+}
+
+const GenericList = ({
+  onSelectGenre,
+}: Genre) => {
+  const { data, loading } = useGenre();
   return (
     <Box>
-      <ul>
+      <List>
+        {loading && <Spinner />}
         {data.map((genre) => (
-          <li>{genre.name}</li>
+          <HStack paddingY={1} key={genre.id}>
+            <Image
+              boxSize="32px"
+              borderRadius="4px"
+              src={genre.image_background}
+            />
+            <Button
+              variant="link"
+              onClick={() =>
+                onSelectGenre(genre)
+              }>
+              {genre.name}
+            </Button>
+          </HStack>
         ))}
-      </ul>
+      </List>
     </Box>
   );
 };
