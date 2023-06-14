@@ -1,9 +1,6 @@
 import { useData } from './useData'
-interface Props{
-    id: string,
-    name: string,
-    Slug: string,
-}
+import { Platform } from './useGame'
 
-export const usePlatforms = () => useData<Props>('/platforms/lists/parents')
+
+export const usePlatforms = () => useData<Platform>('/platforms/lists/parents')
   

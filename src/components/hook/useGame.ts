@@ -14,8 +14,10 @@ export interface DataResult {
 parent_platforms:{ platform: Platform}[],
   }
 
-  export const useGame = (selectedGenre: GenreProps | null) => 
-useData<DataResult>('/games', {params: {genres: selectedGenre?.id}},[selectedGenre?.id])
+  export const useGame = (
+    selectedGenre: GenreProps | null,
+     selectedPlatforms:Platform| null) => 
+useData<DataResult>('/games', {params: {genres: selectedGenre?.id, platforms :selectedPlatforms}},[selectedGenre?.id,selectedPlatforms?.id])
 
     
   
