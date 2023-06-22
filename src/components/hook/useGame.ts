@@ -1,21 +1,28 @@
-
-import { useData } from "./useData";
-import { GenreProps } from "./useGenre";
-export interface Platform{
-    id: string,
-    name: string,
-    slug: string,
+import { GameQuery } from '../../App';
+import { useData } from './useData';
+export interface Platform {
+  id: string;
+  name: string;
+  slug: string;
 }
 export interface DataResult {
-    id: number;
-    name: string;
-    background_image: string;
-    metacritic: number;
-parent_platforms:{ platform: Platform}[],
-  }
+  id: number;
+  name: string;
+  background_image: string;
+  metacritic: number;
+  parent_platforms: { platform: Platform }[];
+}
 
-  export const useGame = (selectedGenre: GenreProps | null) => 
-useData<DataResult>('/games', {params: {genres: selectedGenre?.id}},[selectedGenre?.id])
-
-    
-  
+export const useGame = (gameQuery: GameQuery) =>
+  useData<DataResult>(
+    '/games',
+    {
+      params: {
+        genres: gameQuery.genre?.id,
+        platforms: gameQuery.platform?.id,
+        ordering: gameQuery.sortOrder,
+        search: gameQuery.searchValue,
+      },
+    },
+    [gameQuery]
+  );
