@@ -5,6 +5,7 @@ import {
   Image,
   Button,
   Spinner,
+  Heading,
 } from '@chakra-ui/react';
 import {
   GenreProps,
@@ -23,16 +24,22 @@ const GenericList = ({
   const { data, loading } = useGenre();
   return (
     <Box>
+      <Heading fontSize={'2xl'} marginY={3}>
+        Genres
+      </Heading>
       <List>
         {loading && <Spinner />}
         {data.map((genre) => (
           <HStack paddingY={1} key={genre.id}>
             <Image
+              objectFit={'cover'}
               boxSize="32px"
               borderRadius="4px"
               src={genre.image_background}
             />
             <Button
+              whiteSpace={'normal'}
+              textAlign={'left'}
               variant="link"
               fontWeight={
                 genre.id === selectGenre?.id
